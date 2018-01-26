@@ -6,7 +6,7 @@
 dataDir = fullfile('..','data','prokudin-gorskii');
 
 % Path to your output directory (change this to your output directory)
-outDir = fullfile('..', 'output', 'prokudin-gorskii');
+outDir = fullfile('..', 'output', 'alignment-prokudin-gorskii');
 
 % List of images
 imageNames = {'00125v.jpg',	'00153v.jpg', '00398v.jpg', '00149v.jpg', '00351v.jpg',	'01112v.jpg'};

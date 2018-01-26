@@ -1,4 +1,4 @@
-function [maxv, predShiftsub] = alignChannels_subfunc(im, maxShift, opoint, block_num)
+function [maxv, predShiftsub] = alignChannels_fst_subfunc(im, maxShift, opoint, block_num)
 
 % Sanity check
 assert(size(im,3) == 3);

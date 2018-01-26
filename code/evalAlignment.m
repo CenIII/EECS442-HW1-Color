@@ -26,7 +26,9 @@ display = false;     % if set to true then aligned images are shown
 fprintf('Evaluating alignment ..\n');
 t_array = zeros(1,numImages);
 
-for i = 3:3%1:numImages,
+outDir = fullfile('..', 'output', 'test');
+
+for i = 1:numImages,
     % Read image
     thisImage = fullfile(dataDir, imageNames{i});
     im = imread(thisImage);
@@ -44,17 +46,24 @@ for i = 3:3%1:numImages,
     fprintf('%2i %s\n\t   gt shift: (%2i,%2i) (%2i,%2i)\n\t pred shift: (%2i,%2i) (%2i,%2i)\n',...
             i, imageNames{i}, gtShift(1,:), gtShift(2,:), predShift(1,:), predShift(2,:));
 
+    outimageName = sprintf([imageNames{i}(1:end-4) '.jpg']);
+    outimageName = fullfile(outDir, outimageName);
+    %imwrite(colorIm, outimageName);
+    
     % Optionally display the results
     if display
         % We will use subplot which is a way to show multiple plots/images
         % in a single figure.
-        figure(1); clf;
+        f=figure(1);clf;
         subplot(1,2,1); imagesc(channels); axis image off;
         title('Input image');
         
         subplot(1,2,2); imagesc(colorIm); axis image off;
         title('Aligned image');
+        set(f, 'Position', [800, 800, 400, 185])
+        saveas(f,outimageName,'jpg');
         pause(1); %Pause for 1 second after display
     end
 end
+t_array'
 mean(t_array)
